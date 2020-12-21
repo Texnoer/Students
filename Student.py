@@ -25,6 +25,14 @@ class Mentor:
                 student.grades[course] = [grade]
         else:
             return 'Ошибка'
+class Lecturer(Mentor):
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+class Reviewer(Mentor):
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
 
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
