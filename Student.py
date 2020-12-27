@@ -11,6 +11,13 @@ class Student:
             self.finished_course.append(course_name)
 
     def grades_hw(self, lecturer, course, grade):
+        if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached and course in lecturer.courses_in_progress:
+            if course in lecturer.grades:
+                lecturer.grades[course] += [grade]
+            else:
+                lecturer.grades[course] = [grade]
+        else:
+            return 'Ошибка'
 
 class Mentor:
     def __init__(self, name, surname):
@@ -40,7 +47,8 @@ class Mentor:
 # системы взаимодействй классов.
 class Lecturer(Mentor):
      def __init__(self):
-         grades_from_students = []
+         self.grades = []
+         self.courses_in_progress = []
 
 
 
@@ -66,4 +74,9 @@ cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 
+
+
+
+
 print(best_student.grades)
+print(cool_mentor)
